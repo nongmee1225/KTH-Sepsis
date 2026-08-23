@@ -40,7 +40,7 @@
     const fallback = document.getElementById('browserFallback');
     const isStandalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
     fallback.href = APP_URL;
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=1').catch(() => {});
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=2').catch(() => {});
     if (isStandalone) setTimeout(() => window.location.replace(APP_URL), 700);
   </script>
 </body>
