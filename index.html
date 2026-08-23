@@ -1,47 +1,30 @@
 <!doctype html>
-<html lang="th">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#4a111b">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="KTH Sepsis">
-  <meta name="mobile-web-app-capable" content="yes">
-  <title>KTH Sepsis</title>
-  <link rel="manifest" href="./manifest.webmanifest?v=1">
-  <link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png?v=1">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=1">
+<html lang="th"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#3b0e17"><meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="KTH Sepsis">
+  <meta name="mobile-web-app-capable" content="yes"><title>KTH Sepsis</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=2"><link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png?v=2"><link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2">
   <style>
-    * { box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #18090d; }
-    body { font-family: Tahoma, "Noto Sans Thai", Arial, sans-serif; }
-    .loading { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at 50% 35%, #5f1a27, #18090d 70%); color: #f9e3b2; text-align: center; }
-    .loading[hidden] { display: none; }
-    .loading-content { display: grid; justify-items: center; gap: 16px; }
-    .loading-icon { width: 104px; height: 104px; border-radius: 23px; box-shadow: 0 16px 44px rgba(0,0,0,.45); }
-    .loading-title { font-size: 22px; font-weight: 800; letter-spacing: .04em; }
-    .loading-text { color: #e8c98a; font-size: 14px; }
-    .browser-fallback { position: fixed; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); z-index: 20; display: inline-flex; min-height: 42px; align-items: center; padding: 9px 13px; border: 1px solid #b88945; border-radius: 10px; background: #fff8eb; color: #48131d; box-shadow: 0 8px 24px rgba(0,0,0,.22); font: 700 13px Tahoma, Arial, sans-serif; text-decoration: none; }
-    .browser-fallback[hidden] { display: none; }
+    :root{color-scheme:dark;--gold:#f3d596;--cream:#fff8eb}*{box-sizing:border-box}html,body{width:100%;min-height:100%;margin:0;background:#17080c}body{min-height:100dvh;overflow:auto;font-family:Tahoma,"Noto Sans Thai",Arial,sans-serif;color:var(--cream)}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 20%,rgba(143,41,57,.58),transparent 46%),linear-gradient(135deg,#250a10,#120609 70%)}body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;background-image:linear-gradient(rgba(243,213,150,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(243,213,150,.08) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    .page{position:relative;z-index:1;min-height:100dvh;display:grid;place-items:center;padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom))}.card{width:min(100%,480px);padding:34px 30px 26px;border:1px solid rgba(243,213,150,.24);border-radius:30px;background:linear-gradient(160deg,rgba(95,24,37,.84),rgba(31,10,15,.88));box-shadow:0 28px 80px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.08);backdrop-filter:blur(16px);text-align:center}
+    .icon{width:116px;height:116px;border-radius:27px;box-shadow:0 18px 46px rgba(0,0,0,.45),0 0 34px rgba(255,94,76,.12)}h1{margin:20px 0 5px;color:#ffe4a8;font-size:clamp(28px,7vw,38px);letter-spacing:.02em}.hospital{margin:0;color:#d7b977;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+    .status{display:inline-flex;align-items:center;gap:8px;margin:20px 0 16px;padding:7px 12px;border:1px solid rgba(91,214,143,.25);border-radius:999px;background:rgba(25,111,64,.18);color:#bff3d2;font-size:12px;font-weight:700}.status-dot{width:8px;height:8px;border-radius:50%;background:#52d98b;box-shadow:0 0 12px #52d98b}.intro{margin:0 auto 22px;max-width:350px;color:#ead8ba;font-size:15px;line-height:1.65}.actions{display:grid;gap:11px}
+    .btn{display:flex;min-height:52px;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:15px;font:800 15px Tahoma,"Noto Sans Thai",Arial,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s ease}.btn:active{transform:scale(.98)}.btn-primary{border:1px solid #f2cc7a;background:linear-gradient(135deg,#fff8e9,#ebcf94);color:#3f0d16;box-shadow:0 12px 28px rgba(0,0,0,.24)}.btn-secondary{border:1px solid rgba(243,213,150,.34);background:rgba(255,255,255,.055);color:#ffe3a5}.btn[hidden]{display:none}
+    .device-help{margin:17px 0 0;min-height:40px;color:#cdbb9d;font-size:12px;line-height:1.55}.notice{margin:22px 0 0;padding-top:17px;border-top:1px solid rgba(243,213,150,.16);color:#aa9980;font-size:11px;line-height:1.55}.links{display:flex;justify-content:center;gap:14px;margin-top:14px;color:#d5bc86;font-size:11px}.links a{color:inherit;text-decoration:none}@media(max-width:480px){.page{padding-left:14px;padding-right:14px}.card{padding:28px 20px 23px;border-radius:25px}.icon{width:102px;height:102px}}
   </style>
-</head>
-<body>
-  <div id="loading" class="loading" role="status">
-    <div class="loading-content">
-      <img class="loading-icon" src="./icons/icon-192.png?v=1" alt="">
-      <div class="loading-title">KTH Sepsis</div>
-      <div class="loading-text">ติดตั้งแอปจากเมนูของเบราว์เซอร์<br>หรือเปิดระบบได้ทันทีจากปุ่มด้านล่าง</div>
-    </div>
-  </div>
-  <a id="browserFallback" class="browser-fallback" href="#" target="_top">เปิดระบบตอนนี้ ↗</a>
-  <script>
-    const APP_URL = 'https://script.google.com/macros/s/AKfycbzzxASjRijDWmgw4dNQXxiqnHdEL0JfXdpyki15i2hSzZh3baicOzd1IhqVcicDmbao/exec';
-    const fallback = document.getElementById('browserFallback');
-    const isStandalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
-    fallback.href = APP_URL;
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=2').catch(() => {});
-    if (isStandalone) setTimeout(() => window.location.replace(APP_URL), 700);
-  </script>
-</body>
-</html>
+</head><body><main class="page"><section class="card" aria-labelledby="app-title">
+  <img class="icon" src="./icons/icon-192.png?v=2" alt="ไอคอน KTH Sepsis"><h1 id="app-title">KTH Sepsis</h1><p class="hospital">Khuntan Hospital</p>
+  <div class="status"><span class="status-dot"></span><span>ระบบพร้อมใช้งาน</span></div><p class="intro">ระบบคัดกรองและติดตามผู้ป่วย Sepsis สำหรับบุคลากรโรงพยาบาลขุนตาล</p>
+  <div class="actions"><a id="openApp" class="btn btn-primary" href="#">เปิดระบบคัดกรอง <span aria-hidden="true">↗</span></a><button id="installApp" class="btn btn-secondary" type="button" hidden>ติดตั้งแอปบนอุปกรณ์นี้</button></div>
+  <p id="deviceHelp" class="device-help">กำลังตรวจสอบวิธีติดตั้งที่เหมาะกับอุปกรณ์…</p><p class="notice">เครื่องมือนี้ช่วยสนับสนุนการคัดกรอง ไม่ใช้แทนการวินิจฉัยหรือดุลยพินิจของแพทย์<br>ต้องเข้าสู่ระบบด้วยบัญชี Google ที่ได้รับอนุญาต</p>
+  <nav class="links" aria-label="ข้อมูลเพิ่มเติม"><a href="https://github.com/nongmee1225/KTH-Sepsis">เกี่ยวกับแอป</a><span>•</span><a id="directLink" href="#">เปิดผ่านเบราว์เซอร์</a></nav>
+</section></main><script>
+  const APP_URL='https://script.google.com/macros/s/AKfycbzzxASjRijDWmgw4dNQXxiqnHdEL0JfXdpyki15i2hSzZh3baicOzd1IhqVcicDmbao/exec';
+  const openApp=document.getElementById('openApp'),directLink=document.getElementById('directLink'),installApp=document.getElementById('installApp'),deviceHelp=document.getElementById('deviceHelp');
+  const isIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent),isAndroid=/Android/i.test(navigator.userAgent),isStandalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;let installPrompt;
+  openApp.href=APP_URL;directLink.href=APP_URL;if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=3').catch(()=>{});
+  if(isStandalone){deviceHelp.textContent='กำลังเปิดระบบคัดกรอง…';setTimeout(()=>window.location.replace(APP_URL),650)}else if(isIOS){deviceHelp.innerHTML='iPhone/iPad: แตะปุ่ม <strong>แชร์</strong> แล้วเลือก <strong>เพิ่มไปยังหน้าจอโฮม</strong>'}else if(isAndroid){deviceHelp.innerHTML='Android: แตะเมนู <strong>⋮</strong> แล้วเลือก <strong>ติดตั้งแอป</strong> หรือรอปุ่มติดตั้งด้านบน'}else{deviceHelp.textContent='คอมพิวเตอร์: กดไอคอนติดตั้งบนแถบที่อยู่ของ Chrome หรือ Edge'}
+  addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;installApp.hidden=false});installApp.addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installApp.hidden=true});addEventListener('appinstalled',()=>{deviceHelp.textContent='ติดตั้ง KTH Sepsis เรียบร้อยแล้ว';installApp.hidden=true});
+</script></body></html>
