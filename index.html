@@ -31,16 +31,17 @@
     <div class="loading-content">
       <img class="loading-icon" src="./icons/icon-192.png?v=1" alt="">
       <div class="loading-title">KTH Sepsis</div>
-      <div class="loading-text">กำลังเปิดระบบคัดกรอง Sepsis…</div>
+      <div class="loading-text">ติดตั้งแอปจากเมนูของเบราว์เซอร์<br>หรือเปิดระบบได้ทันทีจากปุ่มด้านล่าง</div>
     </div>
   </div>
-  <a id="browserFallback" class="browser-fallback" href="#" target="_top">แตะเพื่อเปิดระบบ ↗</a>
+  <a id="browserFallback" class="browser-fallback" href="#" target="_top">เปิดระบบตอนนี้ ↗</a>
   <script>
     const APP_URL = 'https://script.google.com/macros/s/AKfycbzzxASjRijDWmgw4dNQXxiqnHdEL0JfXdpyki15i2hSzZh3baicOzd1IhqVcicDmbao/exec';
     const fallback = document.getElementById('browserFallback');
+    const isStandalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
     fallback.href = APP_URL;
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=1').catch(() => {});
-    setTimeout(() => window.location.replace(APP_URL), 700);
+    if (isStandalone) setTimeout(() => window.location.replace(APP_URL), 700);
   </script>
 </body>
 </html>
